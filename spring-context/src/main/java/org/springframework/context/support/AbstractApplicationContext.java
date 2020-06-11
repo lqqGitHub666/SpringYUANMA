@@ -571,6 +571,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 				// Instantiate all remaining (non-lazy-init) singletons.
 				//spring bean的实例化
+				//执行bean的后置处理器
+				//完成bean的实例化，依赖注入，bean的代理
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
