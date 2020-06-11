@@ -106,7 +106,7 @@ final class PostProcessorRegistrationDelegate {
 			//合并list
 			registryProcessors.addAll(currentRegistryProcessors);
 			//最重要，注意这里的方法调用
-			//执行所有的BeanDefinitionRegistryPostProcessor
+			//执行所有的BeanDefinitionRegistryPostProcessor的postProcessBeanDefinitionRegistry方法
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
 			//执行完成了所有的BeanDefinitionRegistryPostProcessor
 			//这个list只是一个临时变量，故而清除
