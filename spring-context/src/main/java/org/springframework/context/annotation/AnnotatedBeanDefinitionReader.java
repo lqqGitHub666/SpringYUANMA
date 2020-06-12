@@ -84,7 +84,13 @@ public class AnnotatedBeanDefinitionReader {
 		Assert.notNull(environment, "Environment must not be null");
 		this.registry = registry;
 		this.conditionEvaluator = new ConditionEvaluator(registry, environment, null);
-		//委托AnnotationConfigUtils
+		//委托AnnotationConfigUtils向registry中beanFactory注册6个固定的类
+		//"org.springframework.context.annotation.internalConfigurationAnnotationProcessor"
+		//"org.springframework.context.event.internalEventListenerFactory"
+		//"org.springframework.context.event.internalEventListenerProcessor"
+		//"org.springframework.context.annotation.internalAutowiredAnnotationProcessor"
+		//"org.springframework.context.annotation.internalCommonAnnotationProcessor"
+		//"org.springframework.context.annotation.internalRequiredAnnotationProcessor"
 		AnnotationConfigUtils.registerAnnotationConfigProcessors(this.registry);
 	}
 
@@ -236,7 +242,7 @@ public class AnnotatedBeanDefinitionReader {
 		ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(abd);
 		abd.setScope(scopeMetadata.getScopeName());
 		String beanName = (name != null ? name : this.beanNameGenerator.generateBeanName(abd, this.registry));
-		//判断有没有加lazy，Primary，Role，Description注解
+		//判断有没有加lazy，Primary，Role，Description注解,如果有的话就在BeanDefinition加上标记
 		AnnotationConfigUtils.processCommonDefinitionAnnotations(abd);
 		if (qualifiers != null) {
 			for (Class<? extends Annotation> qualifier : qualifiers) {

@@ -256,6 +256,7 @@ public class AnnotationConfigUtils {
 	}
 
 	public static void processCommonDefinitionAnnotations(AnnotatedBeanDefinition abd) {
+		//判断有没有加lazy，Primary，Role，Description注解,如果有的话就在BeanDefinition加上标记
 		processCommonDefinitionAnnotations(abd, abd.getMetadata());
 	}
 
