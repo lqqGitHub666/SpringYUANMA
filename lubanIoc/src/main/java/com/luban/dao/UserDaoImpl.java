@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @date 2019/10/10 21:05
  * @注释：
  */
-@Component
+//@Component
 public class UserDaoImpl implements UserDao {
 
 	@Autowired

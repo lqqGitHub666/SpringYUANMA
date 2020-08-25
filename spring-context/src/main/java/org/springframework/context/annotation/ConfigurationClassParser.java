@@ -263,6 +263,7 @@ class ConfigurationClassParser {
 		}
 		while (sourceClass != null);
 		//一个map，用来存放扫描出来的bean（注意这里的bean不是对象，仅仅是bean的信息，因为还没到实例化bean的时候）
+		//用来保存
 		this.configurationClasses.put(configClass, configClass);
 	}
 
@@ -669,6 +670,10 @@ class ConfigurationClassParser {
 					else if (candidate.isAssignable(ImportBeanDefinitionRegistrar.class)) {
 						// Candidate class is an ImportBeanDefinitionRegistrar ->
 						// delegate to it to register additional bean definitions
+
+						//这里判断扫描的类上@Import注解的value是否为ImportBeanDefinitionRegistrar的实现，
+						// 如果是则添加到configClass后续loadBeanDefinitions方法会处理这个实现，调用
+						//registerBeanDefinitions方法往spring容器中注册BeanDefinition
 						Class<?> candidateClass = candidate.loadClass();
 						ImportBeanDefinitionRegistrar registrar =
 								BeanUtils.instantiateClass(candidateClass, ImportBeanDefinitionRegistrar.class);

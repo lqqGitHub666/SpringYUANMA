@@ -13,19 +13,20 @@ import org.springframework.beans.factory.FactoryBean;
  * getObject()得到的对象存在的是当前类指定的名字
  * 当前对象是“&”+当前类的名字
  */
-public class DaoFactoryBean implements FactoryBean {
-    @Override
-    public Object getObject() throws Exception {
-        return null;
-    }
-
-    @Override
-    public Class<?> getObjectType() {
-        return null;
-    }
-
-    @Override
-    public boolean isSingleton() {
-        return false;
-    }
+public class DaoFactoryBean {
+//	implements FactoryBean
+//    @Override
+//    public Object getObject() throws Exception {
+//        return null;
+//    }
+//
+//    @Override
+//    public Class<?> getObjectType() {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean isSingleton() {
+//        return false;
+//    }
 }
